@@ -1,25 +1,30 @@
-
 # Networkwalks Cybersecurity Internship
 
-This repository documents my hands-on learning, practical activities, and technical progress during my Cybersecurity Internship at Networkwalks.
+This repository documents my hands-on learning, practical activities, technical progress, and evidence collected during my Cybersecurity Internship at Networkwalks.
 
 ## 1. Laptop Specifications
 
-- OS: Windows 11 Home
-- RAM: 8 GB
-- Processor: Intel Core i3-N305 (1.80 GHz)
-- Storage: 238 GB
-- Virtualization: Oracle VirtualBox 7.2.8
-- Kali Linux: Kali Linux 2026.3 VirtualBox amd64
+- **OS:** Windows 11 Home
+- **RAM:** 8 GB
+- **Processor:** Intel Core i3-N305 (1.80 GHz)
+- **Storage:** 238 GB
+- **Virtualization:** Oracle VirtualBox 7.2.8
+- **Kali Linux:** Kali Linux 2026.3 VirtualBox amd64
 
 ## 2. Internship Overview
 
 This repository contains weekly task documentation, practical exercises, screenshots, reports, and technical observations completed during the internship.
 
+The activities cover Linux setup, networking, footprinting, network scanning, and password security.
+
 ## 3. Tools and Technologies
 
+### Operating Systems and Virtualization
 - Kali Linux
+- Windows 11
 - Oracle VirtualBox
+
+### Networking and Reconnaissance
 - Nmap
 - Wireshark
 - Tcpdump
@@ -29,6 +34,14 @@ This repository contains weekly task documentation, practical exercises, screens
 - cURL
 - Wafw00f
 - DNSRecon
+
+### Password Security
+- John the Ripper
+- Johnny
+- Strawberry Perl
+- pdf2john.pl
+- Networkwalks Hash Calculator
+- Networkwalks Password Cracker
 
 *Tools are listed based on the activities documented in this repository.*
 
@@ -62,6 +75,23 @@ This repository contains weekly task documentation, practical exercises, screens
 - Network adapter information collection
 - Network topology documentation
 
+### Week 03 – Password Cracking
+
+**PM1 – Password Cracking with John the Ripper**
+- Configured John the Ripper and Johnny.
+- Installed and verified Strawberry Perl.
+- Used `pdf2john.pl` to extract the PDF password hash.
+- Loaded the extracted hash into Johnny.
+- Performed password recovery.
+- Verified the recovered password by opening the protected PDF.
+
+**PM2 – Password Cracking with Networkwalks Tools**
+- Used the Networkwalks Hash Calculator.
+- Extracted the PDF password hash using the PDF option.
+- Used the Networkwalks Password Cracker.
+- Performed password recovery.
+- Verified the result by unlocking the provided PDF.
+
 ## 5. Repository Structure
 
 ```text
@@ -79,6 +109,18 @@ networkwalks-cybersecurity-lab/
 │   ├── Reports/
 │   └── README.md
 │
+├── Week-03/
+│   ├── PM1-JTR/
+│   │   ├── README.md
+│   │   ├── W3-PM1-PDF1-UNLOCKED.png
+│   │   └── W3-PM1-hash.txt
+│   │
+│   ├── PM2-Networkwalks-Tools/
+│   │   ├── README.md
+│   │   └── W3-PM2-PDF1-UNLOCKED.png
+│   │
+│   └── README.md
+│
 └── README.md
 ```
 
@@ -87,12 +129,16 @@ networkwalks-cybersecurity-lab/
 - Gained practical exposure to Linux and networking.
 - Practised basic reconnaissance techniques.
 - Explored network scanning and information gathering.
-- Developed familiarity with cybersecurity tools.
+- Learned PDF password hash extraction.
+- Gained hands-on experience with John the Ripper and Johnny.
+- Practised password recovery using Networkwalks tools.
 - Improved technical documentation and reporting skills.
 
 ## 7. Evidence and Documentation
 
-Screenshots, practical reports, and supporting documentation are organised by week and task.
+Screenshots, practical reports, hash files, and supporting documentation are organised by week and task.
+
+Each weekly folder contains relevant documentation and evidence of the activities performed.
 
 ## 8. Disclaimer
 
