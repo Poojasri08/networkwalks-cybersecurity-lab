@@ -1,154 +1,203 @@
-\# Week 04 - Mediroza General Hospital Penetration Testing Project
+# M1 - Initial Access
 
+## Objective
 
+Investigate the authorised project target and document findings related to the initial access milestone.
 
-\## Project Overview
+## Target
 
+https://medirozahospital.com
 
+## Project Details
 
-A five-day black-box penetration testing project provided by Networkwalks for educational purposes.
+- Client: Mediroza General Hospital
+- Project: Networkwalks Penetration Testing
+- Batch: B083
+- Milestone: M1 - Initial Access
+- Testing Type: Black-box Web Application Penetration Testing
 
+## Activities
 
+- Public website reconnaissance
+- Identification of publicly accessible entry points
+- Review of patient and staff login pages
+- HTTP response header inspection
+- TLS certificate and connection inspection
+- Session cookie configuration review
+- Inspection of publicly available website resources
+- Documentation of observed security configurations
 
-\*\*Client:\*\* Mediroza General Hospital  
+## Initial Observations
 
-\*\*Target:\*\* https://medirozahospital.com  
+### 1. Public Website
 
-\*\*Project Type:\*\* Penetration Testing and Vulnerability Assessment  
+The homepage contains navigation links for:
 
-\*\*Duration:\*\* 5 Days  
+- Home
+- About
+- Doctors
+- Contact
+- Patient Portal
 
-\*\*Batch:\*\* B083
+The website also provides a Staff Login link.
 
+### 2. Login Pages
 
+The following login pages were identified:
 
-\## Project Scope
+- Patient Portal: `/patient/login.php`
+- Staff Login: `/staff/login.php`
 
+Observations:
 
+- Both login pages returned HTTP 200 OK.
+- Both forms use the POST method.
+- Both forms submit to `login.php`.
+- Username and password input fields were identified.
+- No credentials were entered.
 
-The project involves investigating the authorised target, documenting security weaknesses, demonstrating permitted findings and preparing a professional penetration testing report.
+### 3. TLS Configuration
 
+The following observations were recorded:
 
+- HTTPS connection observed.
+- TLS 1.3 observed.
+- Certificate reported as valid and trusted.
+- Certificate expiry: 1 March 2027.
 
-All testing must remain within the explicitly authorised scope.
+### 4. HTTP Response Headers
 
+The following security headers were not observed in the captured homepage, Patient Portal and Staff Login responses:
 
+- Strict-Transport-Security
+- Content-Security-Policy
+- X-Frame-Options
+- X-Content-Type-Options
+- Referrer-Policy
+- Permissions-Policy
 
-\## Project Milestones
+These are preliminary configuration observations, not confirmed exploitable vulnerabilities.
 
+### 5. Technology Disclosure
 
+The Patient Portal and Staff Login responses exposed:
 
-\### M1 - Initial Access
+- Web server: LiteSpeed
+- PHP version: PHP/8.2.36
 
-\- Investigate the target within the authorised scope.
+These details provide technology information but do not independently establish a vulnerability.
 
-\- Identify and document exposed entry points.
+### 6. Session Cookie Observations
 
-\- Record evidence of any confirmed access.
+The observed PHPSESSID cookie had the following attributes:
 
-\- Document the three required PDF lab reports only if legitimately retrieved within the exercise.
+| Attribute | Observation |
+|---|---|
+| Secure | Enabled |
+| HttpOnly | Not enabled |
+| SameSite | Not specified |
+| Path | / |
+| Expiry | Session |
 
+The session identifier remained unchanged after a page refresh.
 
+This limited observation does not establish a session fixation vulnerability.
 
-\### M2 - Data Extraction
+### 7. Login Form Inspection
 
-\- Analyse the three retrieved PDF files.
+The Patient Portal form contained:
 
-\- Examine their encryption.
+- Username input
+- Password input
+- Show-password checkbox
+- Sign-in button
 
-\- Document the authorised file-recovery process.
+Additional observations:
 
-\- Preserve evidence of successful access.
+- `autocomplete="off"` was present on username and password fields.
+- No hidden input fields were identified in the inspected form.
+- No visible CSRF token was identified in the inspected form markup.
+- No client-side `required` attributes were observed.
 
+These observations alone do not establish authentication or CSRF vulnerabilities.
 
+### 8. Publicly Available Website Resources
 
-\### M3 - Attack (Cracking)
+The following resources were inspected:
 
-\- Analyse the recovered project files and their metadata.
+- `robots.txt`
+- `sitemap.xml`
+- `styles.css`
 
-\- Investigate the specified data exposure.
+The sitemap listed four public pages:
 
-\- Document findings related to employee salary and shareholder information without unnecessarily exposing personal or confidential data.
+- `index.html`
+- `about.html`
+- `doctors.html`
+- `contact.html`
 
+The inspected homepage source did not contain visible JavaScript script tags or `/api/` references.
 
+The stylesheet contained presentation rules for the website, authentication pages and patient portal interface.
 
-\### M4 - Penetration Testing Report
+No sensitive configuration or credentials were identified in the inspected stylesheet.
 
-Prepare a professional report containing:
+## Evidence
 
+Screenshots are stored in the Evidence folder.
 
+Evidence includes:
 
-1\. Executive Summary
+- Homepage screenshot
+- About page screenshot
+- Doctors page screenshot
+- Contact page screenshot
+- Patient Portal login page
+- Staff Login page
+- Homepage response headers
+- Patient Portal response headers
+- Staff Login response headers
+- TLS certificate details
+- TLS connection details
+- Session cookie attributes
+- Patient login form inspection
+- Staff login form inspection
+- Login response observations
+- Robots.txt
+- Sitemap.xml
+- Stylesheet inspection
 
-2\. Scope and Methodology
+Sensitive session values and personal information must be redacted before publishing or sharing evidence.
 
-3\. Findings and Proof of Exploitation
+## Testing Limitations
 
-4\. Risk Ratings
+- The shared Week 4 Google Drive folder currently contains only the project guidance PDF.
+- The three sample patient PDF reports required for M1 have not been located in the shared folder.
+- Authenticated portal access has not been tested.
+- Successful initial access has not been demonstrated.
+- The three PDF reports have not been retrieved.
+- Further testing requiring additional project files is pending clarification from the mentor.
 
-5\. Recommendations and Remediation
+## Scope Clarification
 
+The mentor instructed participants:
 
+- Do not download or access database backups.
+- Do not access files outside the explicitly authorised project scope.
 
-\## Evidence Organisation
+All further testing must follow these instructions.
 
+## Safety
 
+- Follow the authorised project scope.
+- Do not access or disclose genuine patient records.
+- Do not perform destructive testing.
+- Do not attempt unauthorised authentication.
+- Stop if genuine confidential information is encountered.
+- Redact sensitive information from evidence before sharing.
 
-Evidence will be organised separately for each milestone.
+## Status
 
+Reconnaissance documented.
 
-
-\- M1: Initial access evidence
-
-\- M2: File analysis and recovery evidence
-
-\- M3: Data exposure findings
-
-\- M4: Final penetration testing report
-
-
-
-\## Learning Objectives
-
-
-
-\- Understand black-box penetration testing.
-
-\- Practise structured vulnerability assessment.
-
-\- Analyse file encryption and metadata.
-
-\- Document security findings.
-
-\- Understand risk assessment and remediation.
-
-\- Develop professional penetration testing reporting skills.
-
-
-
-\## Safety and Authorisation
-
-
-
-This project is conducted in a controlled educational environment.
-
-
-
-Testing must remain limited to the authorised target and agreed scope. No social engineering, denial-of-service testing or testing outside the authorised scope is permitted.
-
-
-
-Sensitive patient, employee and shareholder information must be handled confidentially.
-
-
-
-\## Project Status
-
-
-
-\*\*Status:\*\* In Progress
-
-
-
-Individual milestone completion will be documented as work is completed.
-
+M1 initial access testing remains pending authorised sample files and clarification from the mentor.
